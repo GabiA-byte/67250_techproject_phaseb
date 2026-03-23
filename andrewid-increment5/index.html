@@ -1,0 +1,80 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="./static/script.js" defer></script>
+    <link rel="stylesheet" href="./static/styles.css">
+
+    <title>MonoMuse</title>
+</head>
+
+<body>
+  <div class="container">
+
+    <header class="header">
+      <a href="index.html">
+        <img src="./static/monomuse_logo.png" class="logo">
+      </a>
+
+      <div class="header-actions">
+        <a href="views/tickets.html" class="btn-ticket">Buy Tickets</a>
+        <a href="#" class="btn-profile">👤</a>
+      </div>
+    </header>
+
+    <!-- NAV -->
+    <nav class="nav_bar" id="myNav">
+      <a href="index.html">Home</a>
+      <a href="views/exhibitions.html">Exhibitions</a>
+      <a href="views/tickets.html">Buy Tickets</a>
+      <a href="javascript:void(0);" class="icon" onclick="toggleNav()">☰</a>
+    </nav>
+
+    <main class="main">
+      <h2 id="greeting"></h2>
+
+      <p>
+        MonoMuse is a contemporary museum dedicated to exploring the intersection of art, technology, and human creativity.
+      </p>
+
+      <button id="viewMore" class="btn-ticket">View More</button>
+      <button id="viewLess" class="btn-ticket" style="display:none;">View Less</button>
+
+      <div id="exploreSection" style="display:none; margin-top:20px;">
+
+        <h2>Welcome to MonoMuse</h2>
+        <p>Explore immersive exhibitions and digital innovation.</p>
+
+        <img src="./views/images/museum.png">
+
+        <iframe 
+  width="100%" 
+  height="315"
+  src="https://www.youtube.com/embed/qTW6VVzHsyo"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+        <h2>Mission Statement</h2>
+        <p>
+          MonoMuse is dedicated to fostering creativity and innovation by showcasing the intersection of art and technology. We strive to create an inclusive space where visitors can engage with cutting-edge exhibitions and interactive installations.
+        </p>
+
+        <h2>Milestones</h2>
+        <ul>
+          <li>Founded in 2020 by artists and technologists.</li>
+          <li>Opened to the public in 2021.</li>
+          <li>Hosted TechArt Festival in 2022.</li>
+          <li>Launched online platform in 2023.</li>
+          <li>Won Innovative Museum Award in 2024.</li>
+        </ul>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p id="copyYear"></p>
+    </footer>
+
+  </div>
+</body>
