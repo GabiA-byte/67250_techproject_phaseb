@@ -1,0 +1,77 @@
+<head>
+    <script src="./static/script.js" defer></script>
+    <link rel="stylesheet" href="./static/styles.css">
+    <meta name="author" content="Gabriela Aguirre Lozano">
+    <meta name="keywords" content="Museum, Carnegie Mellon University, Information Systems">
+    <meta name="description" content="MonoMuse website redesign project">
+    <title>MonoMuse</title>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <a href="index.html">
+        <img src="./static/monomuse_logo.png" alt="MonoMuse Logo" class="logo">
+      </a>
+
+      <div class="header-actions">
+        <a href="views/tickets.html" class="btn-ticket">Buy Tickets</a>
+        <a href="#" class="btn-profile">👤</a>
+      </div>
+    </header>
+
+    <!-- NAV (LEFT-ALIGNED HORIZONTAL) -->
+    <nav class="nav_bar">
+      <a href="index.html">Home</a>
+      <a href="views/exhibitions.html">Exhibitions</a>
+      <a href="views/tickets.html">Buy Tickets</a>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main">
+      <h2 id="greeting">Welcome to the MonoMuse Museum</h2>
+
+      <p>
+        MonoMuse is a contemporary museum dedicated to exploring the intersection of art, technology, and human creativity.
+      </p>
+
+      <!-- BUTTONS -->
+      <button id="viewMore" class="btn-ticket">View More</button>
+      <button id="viewLess" class="btn-ticket" style="display:none;">View Less</button>
+
+      <!-- EXPLORE CONTENT (HIDDEN BY DEFAULT) -->
+      <div id="exploreSection" style="display:none; margin-top:20px;">
+
+        <h2>Welcome to MonoMuse</h2>
+        <p>
+          MonoMuse is a contemporary museum dedicated to exploring the intersection of art, technology, and human creativity. Through immersive exhibitions, interactive installations, and rotating collections, MonoMuse invites visitors to discover how digital innovation is transforming the way we create, experience, and understand art.
+        </p>
+
+        <image src="views/images/museum.png" alt="Image of MonoMuse Museum" width="600" height="400">
+
+        <h2>Mission Statement</h2>
+        <p>
+          MonoMuse is dedicated to fostering creativity and innovation by showcasing the intersection of art and technology. We strive to create an inclusive space where visitors can engage with cutting-edge exhibitions and interactive installations.
+        </p>
+
+        <h2>Milestones</h2>
+        <ul>
+          <li>Founded in 2020 by artists and technologists.</li>
+          <li>Opened to the public in 2021.</li>
+          <li>Hosted TechArt Festival in 2022.</li>
+          <li>Launched online platform in 2023.</li>
+          <li>Won Innovative Museum Award in 2024.</li>
+        </ul>
+
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p id="copyYear"></p>
+    </footer>
+
+  </div>
+</body>

@@ -1,0 +1,169 @@
+/* ── RESET & BASE ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Oswald, Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  line-height: 1.5;
+}
+
+body {
+  background: #f5e7cf;
+  color: #58508B;
+}
+
+/* ── CSS GRID CONTAINER ── */
+.container {
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'nav_bar nav_bar'
+    'main main'
+    'footer footer';
+}
+
+.header    { grid-area: header; }
+.nav_bar   { grid-area: nav_bar; }
+.main      { grid-area: main; }
+.footer    { grid-area: footer; }
+
+/* ── HEADER ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: #000;
+}
+
+/* ── LOGO ── */
+.logo {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+/* ── NAV BAR (Flexbox, right-aligned per assignment) ── */
+.nav_bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 24px;
+  background: #111;
+}
+
+.nav_bar a {
+  display: inline-block;
+  text-decoration: none;
+  color: #f5e7cf;
+  font-weight: 400;
+  padding: 8px 16px;
+  border: 2px solid #58508B;
+  border-radius: 12px;
+  background-color: transparent;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav_bar a:hover {
+  background-color: #58508B;
+  color: white;
+  border-color: #BC5090;
+}
+
+/* ── ACTIVE NAV (replaces hard-coded #navselected) ── */
+.active {
+  background-color: #BC5090 !important;
+  color: #ffa600 !important;
+  border-color: #BC5090 !important;
+}
+
+/* ── HEADER ACTION BUTTONS ── */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-ticket {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #ffa600;
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 9px 16px;
+  border-radius: 12px;
+  border: 2px solid #ffa600;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn-ticket:hover {
+  background-color: #e09400;
+  border-color: #e09400;
+}
+
+.btn-profile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #58508B;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  border: 2px solid #BC5090;
+  transition: background-color 0.2s;
+}
+
+.btn-profile:hover {
+  background-color: #BC5090;
+}
+
+/* ── MAIN CONTENT ── */
+.main {
+  padding: 24px 32px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ── READ MORE / LESS ── */
+#longIntro { display: none; }
+#readLess  { display: none; margin-top: 8px; }
+#readMore  { margin-top: 8px; }
+
+/* ── TABLE ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+th {
+  padding: 12px;
+  background-color: #58508B;
+  color: white;
+  text-align: left;
+}
+
+td {
+  padding: 10px 12px;
+}
+
+tr:nth-child(even) {
+  background-color: #ffa60033;
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid #58508B44;
+  padding: 18px 16px;
+  text-align: center;
+  color: #58508B;
+  margin-top: 40px;
+}
