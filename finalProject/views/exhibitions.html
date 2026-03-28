@@ -1,0 +1,77 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&family=Archivo&family=Barlow&display=swap" rel="stylesheet">
+  <title>Exhibitions</title>
+  <script src="../static/script.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="../index.html">
+      <img src="../static/monomuse_logo.png" class="logo">
+    </a>
+    <div class="header-actions">
+      <a href="tickets.html" class="btn-ticket">Buy Tickets</a>
+      <a href="#" class="btn-profile">👤</a>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="nav_bar" id="myNav">
+    <a href="../index.html">Home</a>
+    <a href="exhibitions.html">Exhibitions</a>
+    <a href="tickets.html">Buy Tickets</a>
+    <a href="javascript:void(0);" class="icon" onclick="toggleNav()">☰</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="explore-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="inline-sidebar">
+        <h3>Exhibitions</h3>
+        <a href="#digital-dreams">Digital Dreams</a>
+        <a href="#techart-festival">TechArt Festival</a>
+        <a href="#virtual-visions">Virtual Visions</a>
+        <a href="tickets.html" class="sidebar-cta">Buy Tickets</a>
+      </aside>
+
+      <!-- CONTENT (MATCHES INDEX STRUCTURE) -->
+      <div class="explore-content">
+
+        <h2>Welcome to MonoMuse</h2>
+        <p>Explore immersive exhibitions and digital innovation.</p>
+
+        <h3 id="digital-dreams">Exhibition 1: Digital Dreams</h3>
+        <p>Digital Dreams explores art + AI + immersive design.</p>
+
+        <h3 id="techart-festival">Exhibition 2: TechArt Festival</h3>
+        <p>Robotics, AR, and interactive installations.</p>
+
+        <h3 id="virtual-visions">Exhibition 3: Virtual Visions</h3>
+        <p>Fully immersive VR storytelling experiences.</p>
+
+        <div id="map" style="height:300px; margin-top:20px;"></div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p id="copyYear"></p>
+  </footer>
+
+</div>
+</body>
