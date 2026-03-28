@@ -1,117 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../static/script.js" defer></script>
-    <link rel="stylesheet" href="../static/styles.css">
-    <meta name="keywords" content="Museum, Carnegie Mellon University, Information Systems">
-    <meta name="description" content="MonoMuse website redesign project">
-    <title>Buy Tickets</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&family=Archivo&family=Barlow&display=swap" rel="stylesheet">
+  <title>Buy Tickets</title>
 </head>
+
 <body>
-  <div class="container">
-    <header class="header">
-      <a href="../index.html"><img src="../static/monomuse_logo.png" alt="MonoMuse Logo" class="logo"></a>
-      <div class="header-actions">
-        <a href="tickets.html" class="btn-ticket">Buy Tickets</a>
-        <a href="#" class="btn-profile" title="Profile">👤</a>
-      </div>
-    </header>
+<div class="container">
 
-    <nav class="nav_bar">
-      
-      <a href="../index.html">Home</a>
-      <a href="exhibitions.html">Exhibitions</a>
-      <a href="tickets.html">Buy Tickets</a>
-      <a href="javascript:void(0);" class="icon" onclick="toggleNav()">☰</a>
-    </nav>
+  <header class="header">
+    <a href="../index.html">
+      <img src="../static/monomuse_logo.png" class="logo">
+    </a>
+    <div class="header-actions">
+      <a href="tickets.html" class="btn-ticket">Buy Tickets</a>
+      <a href="#" class="btn-profile">&#128100;</a>
+    </div>
+  </header>
 
-    <main class="main">
-      <h1>Buy Tickets</h1>
+  <nav class="nav_bar" id="myNav">
+    <a href="../index.html">Home</a>
+    <a href="exhibitions.html">Exhibitions</a>
+    <a href="tickets.html">Buy Tickets</a>
+    <a href="javascript:void(0);" class="icon" onclick="toggleNav()">&#9776;</a>
+  </nav>
 
-      <!-- Ticket type prices -->
-      <table>
+  <main class="main">
+
+    <h1>Buy Tickets</h1>
+
+    <table>
+      <thead>
         <tr>
           <th>Ticket Type</th>
           <th>Description</th>
           <th>Price</th>
         </tr>
-        <tr>
-          <td>General</td>
-          <td>Access to all exhibitions and events.</td>
-          <td>$15</td>
-        </tr>
-        <tr>
-          <td>Student</td>
-          <td>Discounted ticket for students with valid ID.</td>
-          <td>$10</td>
-        </tr>
-        <tr>
-          <td>Member</td>
-          <td>Exclusive access and benefits for museum members.</td>
-          <td>$0 (included with membership)</td>
-        </tr>
-      </table>
+      </thead>
+      <tbody>
+        <tr><td>General</td><td>Access to all exhibitions and events.</td><td>$15</td></tr>
+        <tr><td>Student</td><td>Discounted ticket for students with valid ID.</td><td>$10</td></tr>
+        <tr><td>Member</td><td>Exclusive access and benefits for museum members.</td><td>$0 (included with membership)</td></tr>
+      </tbody>
+    </table>
 
-      <!-- Monthly schedule with Buy Now buttons -->
-      <h2 style="margin-top: 32px;">Available Dates — April 2026</h2>
-      <table>
+    <h2 class="section-spacing">Upcoming Available Dates</h2>
+
+    <table>
+      <thead>
         <tr>
           <th>Date</th>
           <th>Time</th>
           <th>Availability</th>
           <th>Action</th>
         </tr>
-        <tr>
-          <td>April 5, 2026</td>
-          <td>10:00 AM</td>
-          <td>Available</td>
-          <td><button class="btn-ticket" onclick="showCheckout('General', 15)">Buy Now</button></td>
-        </tr>
-        <tr>
-          <td>April 12, 2026</td>
-          <td>2:00 PM</td>
-          <td>Available</td>
-          <td><button class="btn-ticket" onclick="showCheckout('General', 15)">Buy Now</button></td>
-        </tr>
-        <tr>
-          <td>April 19, 2026</td>
-          <td>11:00 AM</td>
-          <td>Available</td>
-          <td><button class="btn-ticket" onclick="showCheckout('General', 15)">Buy Now</button></td>
-        </tr>
-        <tr>
-          <td>April 26, 2026</td>
-          <td>3:00 PM</td>
-          <td>Available</td>
-          <td><button class="btn-ticket" onclick="showCheckout('General', 15)">Buy Now</button></td>
-        </tr>
-      </table>
+      </thead>
+      <tbody id="dateTableBody"></tbody>
+    </table>
 
-      <!-- Checkout form — hidden until Buy Now is clicked -->
-      <div id="checkoutSection" style="display:none; margin-top: 32px;">
-        <hr>
-        <h2 id="checkoutTitle"></h2>
+    <div id="checkoutSection" class="checkout-section">
+      <hr class="checkout-divider">
+      <div class="checkout-header">
+        <h2 id="checkoutTitle">Complete Your Purchase</h2>
         <p id="ticketSummary"></p>
-        <form>
-          <label for="name">Name:</label><br>
-          <input type="text" id="name" name="name" required><br><br>
-
-          <label for="email">Email:</label><br>
-          <input type="email" id="email" name="email" required><br><br>
-
-          <label for="quantity">Ticket Quantity:</label><br>
-          <input type="number" id="quantity" name="quantity" min="1" required><br><br>
-
-          <label for="date">Selected Date:</label><br>
-          <input type="text" id="date" name="date" readonly><br><br>
-
-          <!-- calls submitTicket() which alerts "Redirecting to payment system." -->
-          <button type="button" class="btn-ticket" onclick="submitTicket()">Submit</button>
-        </form>
       </div>
-    </main>
+      <div class="ticket-form">
+        <div class="form-group ticket-type-group">
+          <label>Ticket Type</label>
+          <div class="ticket-type-options">
+            <label class="ticket-type-option">
+              <input type="radio" name="ticketType" value="General" data-price="15" checked>
+              <span class="ticket-type-card">
+                <span class="ticket-type-name">General</span>
+                <span class="ticket-type-price">$15</span>
+              </span>
+            </label>
+            <label class="ticket-type-option">
+              <input type="radio" name="ticketType" value="Student" data-price="10">
+              <span class="ticket-type-card">
+                <span class="ticket-type-name">Student</span>
+                <span class="ticket-type-price">$10</span>
+              </span>
+            </label>
+            <label class="ticket-type-option">
+              <input type="radio" name="ticketType" value="Member" data-price="0">
+              <span class="ticket-type-card">
+                <span class="ticket-type-name">Member</span>
+                <span class="ticket-type-price">Free</span>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="nameInput" placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="emailInput" placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ticket Quantity</label>
+            <input type="number" id="quantityInput" min="1" max="10" value="1">
+          </div>
+          <div class="form-group">
+            <label>Selected Date</label>
+            <input type="text" id="date" readonly>
+          </div>
+        </div>
+        <div class="order-summary">
+          <span>Order Total:</span>
+          <span id="orderTotal">$15.00</span>
+        </div>
+        <button type="button" class="btn-ticket submit-btn" onclick="submitTicket()">
+          Confirm &amp; Purchase
+        </button>
+      </div>
+    </div>
 
-    <footer class="footer">
-      <p id="copyYear"></p>
-    </footer>
-  </div>
+  </main>
+
+  <footer class="footer">
+    <p id="copyYear"></p>
+  </footer>
+
+</div>
+
+<!-- ALL JS IS INLINE HERE — no external file needed for this page -->
+<script>
+
+function toggleNav() {
+  var nav = document.getElementById("myNav");
+  nav.className = (nav.className === "nav_bar") ? "nav_bar responsive" : "nav_bar";
+}
+
+function selectDate(date) {
+  document.getElementById("date").value = date;
+  document.getElementById("checkoutSection").style.display = "block";
+  document.getElementById("ticketSummary").textContent = "Selected date: " + date;
+  updateOrderTotal();
+  document.getElementById("checkoutSection").scrollIntoView({ behavior: "smooth" });
+}
+
+function updateOrderTotal() {
+  var radios = document.querySelectorAll('input[name="ticketType"]');
+  var price = 15;
+  for (var i = 0; i < radios.length; i++) {
+    if (radios[i].checked) { price = parseFloat(radios[i].getAttribute("data-price")); break; }
+  }
+  var qty = parseInt(document.getElementById("quantityInput").value, 10) || 1;
+  var total = price * qty;
+  document.getElementById("orderTotal").textContent = total === 0 ? "Free" : "$" + total.toFixed(2);
+}
+
+function submitTicket() {
+  var name  = document.getElementById("nameInput").value.trim();
+  var email = document.getElementById("emailInput").value.trim();
+  var date  = document.getElementById("date").value;
+  var qty   = document.getElementById("quantityInput").value;
+  var radios = document.querySelectorAll('input[name="ticketType"]');
+  var type = "General";
+  for (var i = 0; i < radios.length; i++) {
+    if (radios[i].checked) { type = radios[i].value; break; }
+  }
+  if (!name || !email || !date) { alert("Please fill in all required fields."); return; }
+  alert("Booking confirmed!\n\nName: " + name + "\nEmail: " + email + "\nDate: " + date + "\nTicket: " + type + " x" + qty + "\n\nSee you at MonoMuse!");
+  document.getElementById("checkoutSection").style.display = "none";
+  document.getElementById("nameInput").value = "";
+  document.getElementById("emailInput").value = "";
+  document.getElementById("quantityInput").value = "1";
+  document.getElementById("date").value = "";
+}
+
+// Copyright
+document.getElementById("copyYear").textContent = "Copyright \u00A9 " + new Date().getFullYear();
+
+// Build date table — runs immediately, DOM already exists at this point
+var tableBody = document.getElementById("dateTableBody");
+var dates = [];
+var d = new Date();
+while (dates.length < 4) {
+  d.setDate(d.getDate() + 1);
+  if (d.getDay() === 6) dates.push(new Date(d));
+}
+for (var i = 0; i < dates.length; i++) {
+  (function(dateObj) {
+    var label = dateObj.toLocaleDateString("en-US", {
+      weekday: "long", year: "numeric", month: "long", day: "numeric"
+    });
+    var row = document.createElement("tr");
+    var btn = document.createElement("button");
+    btn.className = "btn-ticket";
+    btn.textContent = "Select Date";
+    btn.onclick = function() { selectDate(label); };
+
+    var cells = [label, "10:00 AM - 5:00 PM", "Available", ""];
+    cells.forEach(function(text, idx) {
+      var td = document.createElement("td");
+      if (idx === 2) {
+        var badge = document.createElement("span");
+        badge.className = "availability-badge";
+        badge.textContent = "Available";
+        td.appendChild(badge);
+      } else if (idx === 3) {
+        td.appendChild(btn);
+      } else {
+        td.textContent = text;
+      }
+      row.appendChild(td);
+    });
+    tableBody.appendChild(row);
+  })(dates[i]);
+}
+
+// Radio change listener for live total update
+var radios = document.querySelectorAll('input[name="ticketType"]');
+for (var r = 0; r < radios.length; r++) {
+  radios[r].addEventListener("change", updateOrderTotal);
+}
+document.getElementById("quantityInput").addEventListener("input", updateOrderTotal);
+
+</script>
 </body>
+</html>
