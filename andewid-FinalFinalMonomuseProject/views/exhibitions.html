@@ -1,0 +1,83 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&family=Archivo&family=Barlow&display=swap" rel="stylesheet">
+  <title>Exhibitions</title>
+  <!-- Leaflet BEFORE script.js so L is defined when script.js runs -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="../static/script.js" defer></script>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="../index.html">
+      <img src="../static/monomuse_logo.png" class="logo">
+    </a>
+    <div class="header-actions">
+      <a href="tickets.html" class="btn-ticket">Buy Tickets</a>
+      <a href="#" class="btn-profile">👤</a>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="nav_bar" id="myNav">
+    <a href="../index.html">Home</a>
+    <a href="exhibitions.html">Exhibitions</a>
+    <a href="tickets.html">Buy Tickets</a>
+    <a href="javascript:void(0);" class="icon" onclick="toggleNav()">☰</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+    <h2>Gallery</h2>
+    <div class="explore-layout">
+      <!-- SIDEBAR -->
+       <aside class="inline-sidebar">
+        <h3>Exhibitions</h3>
+        <div class="accordion-item">
+          <div class="accordion">Digital Dreams</div>
+          <div class="panel">
+            <p>Explores art, AI, and immersive design through interactive installations.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion">TechArt Festival</div>
+          <div class="panel">
+            <p>Features robotics, augmented reality, and experimental digital media.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion">Virtual Visions</div>
+          <div class="panel">
+            <p>Immersive VR storytelling experiences that transport users into new worlds.</p>
+          </div>
+        </div>
+        <a href="tickets.html" class="sidebar-cta">Buy Tickets</a>
+      </aside>
+      <!-- MAIN CONTENT -->
+       <div class="explore-content">
+        <div class="gallery">
+          <button class="gallery-btn" id="prevBtn">&#8249;</button>
+          <img id="galleryImg" src="../static/museum.png" alt="Gallery image">
+          <button class="gallery-btn" id="nextBtn">&#8250;</button>
+        </div>
+        <p id="galleryCaption" class="gallery-caption"></p>
+    <!-- MAP -->
+     <div id="map" style="height:300px; margin-top:20px;"></div>
+    </div>
+  </div>
+</main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p id="copyYear"></p>
+  </footer>
+
+</div>
+</body>
