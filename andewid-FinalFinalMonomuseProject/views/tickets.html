@@ -44,7 +44,7 @@
       <tbody>
         <tr><td>General</td><td>Access to all exhibitions and events.</td><td>$18</td></tr>
         <tr><td>Student</td><td>Discounted ticket for students with valid ID.</td><td>$18</td></tr>
-        <tr><td>Member</td><td>Exclusive access and benefits for museum members.</td><td>$18 (included with membership)</td></tr>
+        <tr><td>Member</td><td>Exclusive access and benefits for museum members.</td><td>$18</td></tr>
       </tbody>
     </table>
 
@@ -73,24 +73,24 @@
           <label>Ticket Type</label>
           <div class="ticket-type-options">
             <label class="ticket-type-option">
-              <input type="radio" name="ticketType" value="General" data-price="15" checked>
+              <input type="radio" name="ticketType" value="General" data-price="18" checked>
               <span class="ticket-type-card">
                 <span class="ticket-type-name">General</span>
-                <span class="ticket-type-price">$15</span>
+                <span class="ticket-type-price">$18</span>
               </span>
             </label>
             <label class="ticket-type-option">
-              <input type="radio" name="ticketType" value="Student" data-price="10">
+              <input type="radio" name="ticketType" value="Student" data-price="18">
               <span class="ticket-type-card">
                 <span class="ticket-type-name">Student</span>
-                <span class="ticket-type-price">$10</span>
+                <span class="ticket-type-price">$18</span>
               </span>
             </label>
             <label class="ticket-type-option">
-              <input type="radio" name="ticketType" value="Member" data-price="0">
+              <input type="radio" name="ticketType" value="Member" data-price="18">
               <span class="ticket-type-card">
                 <span class="ticket-type-name">Member</span>
-                <span class="ticket-type-price">Free</span>
+                <span class="ticket-type-price">$18</span>
               </span>
             </label>
           </div>
@@ -117,7 +117,7 @@
         </div>
         <div class="order-summary">
           <span>Order Total:</span>
-          <span id="orderTotal">$15.00</span>
+          <span id="orderTotal">$18.00</span>
         </div>
         <button type="button" class="btn-ticket submit-btn" onclick="submitTicket()">
           Confirm &amp; Purchase
@@ -133,7 +133,6 @@
 
 </div>
 
-<!-- ALL JS IS INLINE HERE — no external file needed for this page -->
 <script>
 
 function toggleNav() {
@@ -151,7 +150,7 @@ function selectDate(date) {
 
 function updateOrderTotal() {
   var radios = document.querySelectorAll('input[name="ticketType"]');
-  var price = 15;
+  var price = 18;
   for (var i = 0; i < radios.length; i++) {
     if (radios[i].checked) { price = parseFloat(radios[i].getAttribute("data-price")); break; }
   }
@@ -182,7 +181,7 @@ function submitTicket() {
 // Copyright
 document.getElementById("copyYear").textContent = "Copyright \u00A9 " + new Date().getFullYear();
 
-// Build date table — runs immediately, DOM already exists at this point
+// Build date table
 var tableBody = document.getElementById("dateTableBody");
 var dates = [];
 var d = new Date();
@@ -220,7 +219,7 @@ for (var i = 0; i < dates.length; i++) {
   })(dates[i]);
 }
 
-// Radio change listener for live total update
+// Radio + quantity listeners
 var radios = document.querySelectorAll('input[name="ticketType"]');
 for (var r = 0; r < radios.length; r++) {
   radios[r].addEventListener("change", updateOrderTotal);
